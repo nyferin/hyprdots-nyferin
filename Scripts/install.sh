@@ -75,7 +75,8 @@ EOF
     #----------------------#
     shift $((OPTIND - 1))
     cust_pkg=$1
-    sudo cp custom_hypr.lst install_pkg.lst
+    touch install_pkg.lst
+    cp custom_hypr.lst install_pkg.lst
 
     if [ -f "$cust_pkg" ] && [ ! -z "$cust_pkg" ]; then
         cat $cust_pkg >>install_pkg.lst
@@ -101,7 +102,7 @@ EOF
     # install packages from the list #
     #--------------------------------#
     ./install_pkg.sh install_pkg.lst
-    sudo rm install_pkg.lst
+    rm install_pkg.lst
 
 fi
 
